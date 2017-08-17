@@ -30,7 +30,10 @@
   width: 56px;
   height: 56px;
   padding: 0;
-  transition: box-shadow 280ms $mdc-animation-standard-curve-timing-function;
+  transition:
+    box-shadow 280ms $mdc-animation-standard-curve-timing-function,
+    opacity 15ms linear 30ms,
+    mdc-animation-enter(transform, 270ms);
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -104,6 +107,20 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  transition: mdc-animation-enter(transform, 180ms, 90ms);
+}
+
+.mdc-fab--exit {
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 15ms linear 150ms,
+    mdc-animation-exit-permanent(transform, 180ms);
+
+  .mdc-fab__icon {
+    transform: scale(0);
+    transition: mdc-animation-exit-permanent(transform, 135ms);
+  }
 }
 
 // postcss-bem-linter: end
