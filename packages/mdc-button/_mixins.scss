@@ -23,6 +23,19 @@ $dark-theme-ink-color: text-primary-on-dark;
 $disabled-ink-color: rgba(black, .38);
 $disabled-dark-theme-ink-color: text-disabled-on-dark;
 
+@mixin mdc-button-contained-accessible($container-color) {
+  @include mdc-button-container-color($container-color);
+  $light-or-dark: mdc-theme-light-or-dark($container-color);
+  @if ($light-or-dark == 'light') {
+    @include mdc-button-ink-color(text-primary-on-dark);
+    @include mdc-button-ripple((base-color: white, opacity: .32));
+  }
+  @else {
+    @include mdc-button-ink-color(text-primary-on-light);
+    @include mdc-button-ripple((base-color: black, opacity: .32));
+  }
+}
+
 @mixin mdc-button-container-color($color) {
   @include mdc-theme-prop(background-color, $color);
 }
@@ -83,15 +96,11 @@ $disabled-dark-theme-ink-color: text-disabled-on-dark;
 }
 
 @mixin mdc-button-contained_() {
-  @include mdc-button-ripple((base-color: white, opacity: .32));
-  @include mdc-button-ink-color(text-primary-on-dark);
-  @include mdc-button-container-color(black);
+  @include mdc-button-contained-accessible(black);
 }
 
 @mixin mdc-button-contained-dark_() {
-  @include mdc-button-ripple((base-color: black, opacity: .32));
-  @include mdc-button-ink-color(text-primary-on-light);
-  @include mdc-button-container-color(white);
+  @include mdc-button-contained-accessible(white);
 }
 
 @mixin mdc-button-raised_() {
