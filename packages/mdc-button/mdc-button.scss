@@ -110,34 +110,26 @@
 .mdc-button {
   fieldset:disabled &,
   &:disabled {
-    @include mdc-button-disabled_;
+    cursor: default;
+    pointer-events: none;
+  }
 
-    @include mdc-theme-dark(".mdc-button") {
-      @include mdc-button-disabled-dark_;
-    }
+  @include mdc-button-disabled;
+}
+
+.mdc-button--raised {
+  fieldset:disabled &,
+  &:disabled {
+    @include mdc-elevation(0);
   }
 }
 
 .mdc-button--raised,
 .mdc-button--unelevated {
-  fieldset:disabled &,
-  &:disabled {
-    @include mdc-button-contained-disabled_;
-
-    @include mdc-theme-dark(".mdc-button") {
-      @include mdc-button-contained-disabled-dark_;
-    }
-  }
+  @include mdc-button-disabled-contained;
 }
 
 .mdc-button--stroked {
-  fieldset:disabled &,
-  &:disabled {
-    @include mdc-button-stroked-disabled_;
-
-    @include mdc-theme-dark(".mdc-button") {
-      @include mdc-button-stroked-disabled-dark_;
-    }
-  }
+  @include mdc-button-disabled-stroked;
 }
 // postcss-bem-linter: end
